@@ -1,0 +1,22 @@
+{% extends "basic_app/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+    {% if registered %}
+        <h1>등록해주셔서 감사합니다!!</h1>
+    {% else %}
+        <h1>여기에서 등록하세요!</h1>
+        <h3>양식을 채우세요 : </h3>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" name="" value="등록">
+        </form>
+    {% endif %}
+</div>
+
+{% endblock %}
